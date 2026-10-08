@@ -33,7 +33,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private data class Entry(val name:String="", val pickRate:Double=0.0, val games:Int?=null, val iconUrl:String?=null)
+data class Entry(val name:String="", val pickRate:Double=0.0, val games:Int?=null, val iconUrl:String?=null)
 private data class Augments(val silver:List<Entry>=emptyList(), val gold:List<Entry>=emptyList(), val prismatic:List<Entry>=emptyList())
 private data class ChampionData(val champion:String="", val patch:String="", val augments:Augments=Augments(), val prismaticItems:List<Entry>=emptyList(), val normalItems:List<Entry>=emptyList())
 private interface Api { @GET("api/champion/{slug}") suspend fun champion(@Path("slug") slug:String,@Query("patch") patch:String="16.20"):ChampionData }
